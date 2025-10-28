@@ -3,7 +3,7 @@ kind: Component
 metadata:
   name: idpautomationlowercase
   namespace: default
-  description: new refresh
+  description: Non Updated Refresh
   annotations:
     gitlab.com/project-id: '43877214'
     jira/project-key: IDP
