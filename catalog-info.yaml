@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: idp-automation-github-repo
+  description: Pipeline for Github
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: service
+  owner: idp-automation@harnessioprivate.testinator.com
+  lifecycle: experimental
