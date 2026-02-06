@@ -1,0 +1,13 @@
+apiVersion: harness.io/v1
+kind: Component
+type: test-new-type
+identifier: testcomponentgithub
+name: test-component-github
+owner: group:account/_test_underscore_group
+spec:
+  lifecycle: experimental
+queryableEntityRef: zEaak-FLS425IEO7OLzMUg/component/testcomponentgithub
+metadata:
+  description: sajb
+  tags:
+  - java
