@@ -1,0 +1,21 @@
+apiVersion: harness.io/v1
+kind: Component
+type: service
+identifier: TestTechdocsCamelCase
+name: Test-Techdocs-Camel-Case
+owner: group:account/_test_underscore_group
+spec:
+  lifecycle: experimental
+  sourceCode:
+    provider: Harness
+    repoName: account.backstage-test
+    connectorRef: ''
+    branch: main
+    monoRepo: false
+    url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/code/repos/backstage-test/files/main/~/
+metadata:
+  description: test-techdocs-camelcase
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+  tags:
+  - java
