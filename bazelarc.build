@@ -1,0 +1,81 @@
+# Copyright 2022 Harness Inc. All rights reserved.
+# Use of this source code is governed by the PolyForm Free Trial 1.0.0 license
+# that can be found in the licenses directory at the root of this repository, also available at
+# https://polyformproject.org/wp-content/uploads/2020/05/PolyForm-Free-Trial-1.0.0.txt.
+
+# Add properties that are shared between developers and ci build system
+
+# Setup java toolchain for compilation
+build --java_language_version=17
+
+# Setup java toolchain for execution
+build --java_runtime_version=local_jdk
+
+build --tool_java_language_version=17
+build --tool_java_runtime_version=local_jdk
+build --javacopt='--release 17'
+build --jvmopt="--illegal-access=debug"
+build --jvmopt="--add-exports java.base/sun.nio.ch=ALL-UNNAMED"
+build --jvmopt="--add-exports java.xml/com.sun.org.apache.xerces.internal.parsers=ALL-UNNAMED"
+build --jvmopt="--add-opens java.base/java.io=ALL-UNNAMED"
+build --jvmopt="--add-opens java.base/java.lang=ALL-UNNAMED"
+build --jvmopt="--add-opens java.base/java.lang.invoke=ALL-UNNAMED"
+build --jvmopt="--add-opens=java.base/java.lang.reflect=ALL-UNNAMED"
+build --jvmopt="--add-opens java.base/java.math=ALL-UNNAMED"
+build --jvmopt="--add-opens java.base/java.nio=ALL-UNNAMED"
+build --jvmopt="--add-opens java.base/java.nio.file=ALL-UNNAMED"
+build --jvmopt="--add-opens java.base/java.time=ALL-UNNAMED"
+build --jvmopt="--add-opens java.base/java.util=ALL-UNNAMED"
+build --jvmopt="--add-opens java.base/java.util.concurrent=ALL-UNNAMED"
+build --jvmopt="--add-opens java.base/java.util.concurrent.atomic=ALL-UNNAMED"
+build --jvmopt="--add-opens java.xml/com.sun.org.apache.xpath.internal=ALL-UNNAMED"
+build --jvmopt="--add-opens java.base/java.text=ALL-UNNAMED"
+
+# Use JDK17 --config=jdk17
+build:jdk17 --java_language_version=17
+build:jdk17 --tool_java_language_version=17
+build:jdk17 --javacopt='--release 17'
+
+build --enable_platform_specific_config
+
+build --action_env=HARNESS_GENERATION_PASSPHRASE
+
+build --workspace_status_command=tools/bazel/workspace_status_command.sh
+
+build --experimental_strict_java_deps=off
+build --java_header_compilation=false
+build --javacopt='-XepDisableAllChecks'
+build --javacopt='-Xep:UnnecessaryTypeArgument:OFF -Xep:BadAnnotationImplementation:WARN -Xep:WrongOneof:WARN -Xep:EqualsHashCode:WARN -Xep:GetClassOnAnnotation:WARN -Xep:OptionalOfRedundantMethod:WARN -Xep:MustBeClosedChecker:WARN  -Xep:UnicodeInCode:WARN  -Xep:InjectOnMemberAndConstructor:WARN -Xep:ArrayHashCode:WARN -Xep:ArrayEquals:WARN '
+build --javacopt='-Xep:GuiceInjectOnFinalField:WARN -Xep:MoreThanOneInjectableConstructor:WARN -Xep:IdentityBinaryExpression:WARN -Xep:JodaToSelf:WARN'
+build --javacopt='-Xep:SelfAssignment:WARN -Xep:CheckReturnValue:WARN -Xep:FormatString:WARN -Xep:CollectionIncompatibleType:WARN -Xep:ArrayToString:WARN'
+build --javacopt='-Xep:ProtoBuilderReturnValueIgnored:WARN -Xep:UnnecessaryCheckNotNull:WARN -Xep:MisusedWeekYear:WARN -Xep:MathRoundIntLong:WARN'
+build --javacopt='-Xep:MockitoUsage:WARN -Xep:OptionalMapUnusedValue:WARN -Xep:DoNotMock:WARN -Xep:RandomModInteger:WARN -Xep:DeadException:WARN'
+build --javacopt='-Xep:ArrayToString:WARN'
+
+build --javacopt='-Xlint:none'
+
+#CV-Nextgen
+build --action_env=VERIFICATION_SERVICE_SECRET=67d9b94d9856665afc21acd3aa745401
+
+# Test specific
+build --test_env=MAX_ALLOWED_THREAD_LEAKS
+build --test_env=TEST_OWNERS_ROOT_DIR
+build --test_env=TEST_MONGO_URI
+build --test_output=errors
+build --test_env=LC_ALL="en_US.UTF-8"
+
+# Test Intelligence flag
+test --define=HARNESS_ARGS=
+build --define=HARNESS_ARGS=
+
+# Bazel SonarQube Integration
+coverage --collect_code_coverage
+coverage --combined_report=lcov
+coverage --coverage_report_generator=//tools/bazel/sonarqube:sonarqube_coverage_generator
+coverage --experimental_fetch_all_coverage_outputs
+coverage --experimental_strict_java_deps=off
+coverage --cache_test_results=yes
+coverage --test_output=summary
+coverage --build_runfile_links
+
+build --@rules_jvm_external//settings:stamp_manifest=false
