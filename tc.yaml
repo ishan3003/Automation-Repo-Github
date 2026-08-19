@@ -1,0 +1,8 @@
+apiVersion: harness.io/v1
+kind: Component
+type: service
+identifier: test05
+name: test05
+owner: group:account/_account_all_users
+spec:
+  lifecycle: production
