@@ -1,0 +1,8 @@
+apiVersion: harness.io/v1
+kind: Component
+type: service
+identifier: manualgitx01
+name: manual-gitx-01
+owner: user:account/idp-release-automation-ui@harnessioprivate.testinator.com
+spec:
+  lifecycle: experimental
