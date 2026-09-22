@@ -1,0 +1,10 @@
+apiVersion: harness.io/v1
+kind: Component
+type: service
+identifier: test2
+name: test-2
+owner: user:account/idp-release-automation-ui@harnessioprivate.testinator.com
+spec:
+  lifecycle: experimental
+metadata:
+  description: testing
