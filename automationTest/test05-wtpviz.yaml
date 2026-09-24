@@ -1,0 +1,8 @@
+apiVersion: harness.io/v1
+kind: Component
+type: service
+identifier: test05wtpviz
+name: test05-wtpviz
+owner: user:account/idp-release-automation-ui@harnessioprivate.testinator.com
+spec:
+  lifecycle: production
