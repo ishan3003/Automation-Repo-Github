@@ -1,0 +1,12 @@
+apiVersion: harness.io/v1
+kind: Component
+type: service
+identifier: testgitbranch
+name: test-git-branch
+owner: group:account/IDP10948
+spec:
+  lifecycle: experimental
+metadata:
+  description: test
+  tags:
+  - idp-10316
