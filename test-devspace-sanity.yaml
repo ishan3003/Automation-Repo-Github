@@ -7,6 +7,6 @@ owner: group:account/IDP10948
 spec:
   lifecycle: experimental
 metadata:
-  description: test
+  description: test-updated
   tags:
   - idp-10316
