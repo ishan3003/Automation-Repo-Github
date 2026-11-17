@@ -1,0 +1,8 @@
+apiVersion: harness.io/v1
+kind: Component
+type: service
+identifier: test05ysevko
+name: test05-ysevko
+owner: user:account/idp-release-automation-ui@harnessioprivate.testinator.com
+spec:
+  lifecycle: production
